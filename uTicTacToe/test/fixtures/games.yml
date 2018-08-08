@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  currPlayer: 1
+  currBox: 1
+  lastBox: 1
+  lastTile: 1
+
+two:
+  currPlayer: 1
+  currBox: 1
+  lastBox: 1
+  lastTile: 1

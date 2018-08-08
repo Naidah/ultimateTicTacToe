@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tilesRemaining: 1
+  owner: 1
+
+two:
+  tilesRemaining: 1
+  owner: 1
