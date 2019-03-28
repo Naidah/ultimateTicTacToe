@@ -10,32 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_115612) do
-
-  create_table "boxes", force: :cascade do |t|
-    t.integer "tilesRemaining"
-    t.integer "owner"
-    t.integer "game_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["game_id"], name: "index_boxes_on_game_id"
-  end
+ActiveRecord::Schema.define(version: 2018_08_14_020706) do
 
   create_table "games", force: :cascade do |t|
+    t.string "board"
     t.integer "currPlayer"
-    t.integer "currBox"
-    t.integer "lastBox"
-    t.integer "lastTile"
+    t.string "owner"
+    t.boolean "joinAvailable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "tiles", force: :cascade do |t|
-    t.integer "owner"
-    t.integer "box_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["box_id"], name: "index_tiles_on_box_id"
   end
 
 end

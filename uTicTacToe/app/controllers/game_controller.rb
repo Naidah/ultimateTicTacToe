@@ -1,53 +1,58 @@
 class GameController < ApplicationController
     def newGame
         game = Game.new
+        game.board = "0"*81
         game.currPlayer = 1
-        game.currBox = -1
-        game.lastBox = -1
-        game.lastTile = -1
 
-        f = false
-
-        if game.save
-            for i in 0..8 do
-                box = Box.new
-                box.tilesRemaining = 9
-                box.owner = 0
-                box.game_id = game.id
-
-                if box.save
-
-                    for k in 0..8 do
-                        tile = Tile.new
-                        tile.owner = 0
-                        tile.box_id = box.id
-
-                        if !(tile.save)
-                            f = true
-                        end
-                    end
-                else
-                    f = true
-                end
-            end
+        if params[:user].blank? # assign the owner name if given, or a default if otherwise
+            game.owner = "Untitled game"
         else
-            f = true
+            game.owner = params[:user]
         end
 
-        if f == true
-            game.destroy
-            json_response({}, :conflict)
-        else
-            json_response({}, :ok)
-        end
+        game.joinAvailable = true
+
+        raise InvalidParameterError unless game.save
+        json_response(game)
+    rescue
+        json_response({}, :conflict)
+    end
+
+    def joinGame
+        games = Game.where(id: params[:gameid])
+        raise InvalidParameterError if games.empty?
+        game = games.first
+        raise InvalidParameterError unless game.joinAvailable
+        game.joinAvailable = false
+        raise InvalidParameterError unless game.save
+        json_response(game)
+    rescue
+        json_response({}, :bad_request)
     end
 
     def sendBoard
-        json_response({})
+        games = Game.where(id: params[:gameid])
+        raise InvalidParameterError if games.empty?
+        game = games.first
+        json_response(game)
+    rescue
+        json_response({}, :bad_request)
     end
 
     def makeMove
-        json_response({}, :conflict)
+        games = Game.where(id: params[:gameid])
+        raise InvalidParameterError if games.empty?
+        puts params
+        game = games.first
+        raise InvalidParameterError unless game.currPlayer == params[:player].to_i
+        raise InvalidParameterError if validBoard(params[:board]) == 0
+        game.board = params[:board]
+        raise InvalidParameterError unless game.save
+        game.currPlayer = (game.currPlayer % 2) + 1
+        raise InvalidParameterError unless game.save
+        json_response({})
+    rescue
+        json_response({}, :bad_request)
     end
 
     def getSessions
@@ -57,11 +62,17 @@ class GameController < ApplicationController
 
     def destroyGame
         games = Game.where(id: params[:gameid])
-        if games.empty?
-            json_response({}, :bad_request)
-        else
-            games.destroy_all
-            json_response({})
-        end
+        raise InvalidParameterError if games.empty?
+        games.destroy_all
+        json_response({})
+    rescue
+        json_response({}, :bad_request)
     end
+end
+
+def validBoard(b)
+    if b.length != 81
+        return 0
+    end
+    return 1
 end
