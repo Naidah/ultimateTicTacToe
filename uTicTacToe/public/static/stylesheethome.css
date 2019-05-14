@@ -1,0 +1,56 @@
+body {
+    background-color: #F2F2FF;
+    display: flex;
+    font-family: ubuntu;
+}
+
+#lowerBox {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+#upperBox {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+#lobbyLabel {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#lobbyContainer {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    height: 90%;
+    width: 400px;
+}
+
+.lobbyBox {
+    display: block;
+    background-color: #7070AA;
+    width: 80%;
+    line-height: 50px;
+    text-align: center;
+    height: 50px;
+    margin: 10px;
+}
+
+.lobbyButton {
+    display: block;
+    height: 35px;
+    background-color: pink;
+    margin: 10px 0px 10px 0px;
+    width: 60%;
+    border-radius: 5px;
+}
+
+.lobbyLink {
+    line-height: 35px;
+    cursor: pointer;
+}

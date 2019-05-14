@@ -14,6 +14,12 @@ class GameController < ApplicationController
 
         raise InvalidParameterError unless game.save
         json_response(game)
+
+        if params[:ai] == true
+            fork do
+                exec("python3.7 ai.py #{game.id}")
+            end
+        end
     rescue
         json_response({}, :conflict)
     end

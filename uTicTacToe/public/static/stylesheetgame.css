@@ -1,0 +1,138 @@
+.boardFull {
+    border-color: green !important;
+}
+
+#board {
+    width: 351px;
+    height: 351px;
+    display: inline-block;
+    border: red 3px solid;
+}
+
+#gameText {
+    font-size: 48px;
+    width: 250px;
+    margin: 100px 20px 100px 20px;
+    float: left;
+    text-align: center;
+    font-family: ubuntu;
+}
+
+#controlBox {
+    display: inline-block;
+    margin: 0px 0px 0px 40px;
+    border-radius: 30px;
+}
+
+#selectionPanel {
+    padding: 1px 0px 1px 0px;
+    border-radius: 30px;
+    background-color: orange;
+
+}
+
+.controlButton {
+    display: block;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    margin: 25px;
+}
+
+#moveButton {
+    background-color: #10A010;
+}
+
+#moveButton.buttonActive {
+    box-shadow: 0px 0px 0px 5px #108010;
+}
+
+#focusButton {
+    background-color: blue;
+}
+
+#homeButton {
+    background-color: purple;
+}
+
+#focusButton.buttonActive {
+    box-shadow: 0px 0px 0px 5px #1010A0;
+}
+
+#avoidButton {
+    background-color: red;
+}
+
+#avoidButton.buttonActive {
+    box-shadow: 0px 0px 0px 5px #C01010;
+}
+
+
+
+
+
+
+
+.nestedBoard {
+    float: left;
+    width: 109px;
+    height: 109px;
+    border: solid red 4px;
+}
+
+.activeBox {
+    border: solid green 4px;
+}
+
+.move2 {
+    background-color: #DDDDFF;
+}
+
+.move1 {
+    background-color: #FFCCAA;
+}
+
+.move-1 {
+    background-color: #EEEEEE;
+}
+
+.tileWin1 {
+    border-color: #DF5000 !important;
+}
+
+.tileWin2 {
+    border-color: #1616ea !important;
+}
+
+.tile {
+    float: left;
+    width: 35px;
+    padding-bottom: 35px;
+    background-color: #F0F0F0;
+}
+
+.tile1 {
+    background-color: #E0A000;
+}
+
+.tile2 {
+    background-color: #0080C0;
+}
+
+.tileLast1 {
+    background-color: #D04000;
+}
+
+.tileLast2 {
+    background-color: #001080;
+}
+
+
+
+.tileAvoid {
+    background-color: #F0D0D0;
+}
+
+.tileFocus {
+    background-color: #C0FFC0;
+}

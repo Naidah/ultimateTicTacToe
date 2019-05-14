@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TIC TAC TOE</title>
+    <link rel="stylesheet" type="text/css" href="static/stylesheetgame.css">
+    <script type="text/javascript" src="static/match.js"></script>
+</head>
+<body class="move1">
+    <div id="board" class="boardFull"></div>
+    <div id="gameText">Yellow's turn</div>
+    <div id="controlBox">
+        <div id="selectionPanel">
+            <div onclick="selectMode('moveButton')" class="controlButton buttonActive" id="moveButton"></div>
+            <div onclick="selectMode('focusButton')" class="controlButton" id="focusButton"></div>
+            <div onclick="selectMode('avoidButton')" class="controlButton" id="avoidButton"></div>
+        </div>
+        <div onclick="exitGame()" class="controlButton" id="homeButton"></div>
+    </div>
+</body>
+</html>
