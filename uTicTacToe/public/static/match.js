@@ -138,7 +138,7 @@ function updateTiles(tile) {
 
             // Add the needed classes
             if (bState[b][t] != 0) {
-                allTiles[t].classList.remove("tileAvoid", "tileRemove");
+                allTiles[t].classList.remove("tileAvoid", "tileFocus");
                 allTiles[t].classList.add("tile"+bState[b][t]);
             }
             if (b == last[0] && t == last[1]) {
@@ -345,9 +345,9 @@ class GameLocal {
     getBannerString() {
         var s;
         if (this.gameOver()) {
-            if (this.checkGameWinState() == 2) {
+            if (this.checkGameWinState() == 1) {
                 s = "Yellow Wins!";
-            } else if (this.checkGameWinState() == 1) {
+            } else if (this.checkGameWinState() == 2) {
                 s = "Blue Wins!";
             } else {
                 s = "Draw!";

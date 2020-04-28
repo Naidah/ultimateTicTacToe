@@ -111,6 +111,16 @@
     background-color: #F0F0F0;
 }
 
+
+
+.tileAvoid {
+    background-color: #F0D0D0;
+}
+
+.tileFocus {
+    background-color: #C0FFC0;
+}
+
 .tile1 {
     background-color: #E0A000;
 }
@@ -125,14 +135,4 @@
 
 .tileLast2 {
     background-color: #001080;
-}
-
-
-
-.tileAvoid {
-    background-color: #F0D0D0;
-}
-
-.tileFocus {
-    background-color: #C0FFC0;
 }
