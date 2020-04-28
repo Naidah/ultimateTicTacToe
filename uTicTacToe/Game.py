@@ -6,6 +6,22 @@ class Board():
         self.player = 1
         self.free = 81
 
+    def __eq__(self, obj):
+        if not isinstance(obj, Board):
+            return False
+
+        for n, i in enumerate(self.board):
+            for m, j in enumerate(i):
+                if j.value != obj[n][m].value:
+                    return False
+        return True
+
+    def __iter__(self):
+        return iter(self.board)
+
+    def __getitem__(self, i):
+        return self.board[i]
+
     def showBoard(self):
         print("-------------------------------------------------")
         for i in [0, 3, 6]:
@@ -100,6 +116,12 @@ class Box():
         self.winner = 0
         self.id = id
         self.slots = 9
+
+    def __iter__(self):
+        return iter(self.cells)
+
+    def __getitem__(self, i):
+        return self.cells[i]
 
     def duplicate(self):
         newBox = Box(self.id)
